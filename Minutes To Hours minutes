@@ -1,0 +1,11 @@
+Function MinutesToHoursMinutes(ByVal vMins As Integer) As String
+Dim Mins As Integer
+Dim Hours As Integer
+vMins = IIF(vMins <= 0, 0, vMins)
+Hours = Floor(vMins / 60)
+Mins = vMins - (Hours * 60)
+MinutesToHoursMinutes = IIF(Hours < 9, "0" & CStr(Hours), CStr(Hours)) & ":" & IIF(Mins < 9, "0" & CStr(Mins), CStr(Mins))
+Return MinutesToHoursMinutes
+End Function
+
+//1--->00:01
