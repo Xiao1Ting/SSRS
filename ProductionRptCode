@@ -1,0 +1,83 @@
+Private Shared _hashtable As New System.Collections.Hashtable()
+
+Function SetValue(ByVal id as String, ByVal value As String) As Object
+                SyncLock _hashtable.SyncRoot
+                dim Key as String = id & Report.Parameters!TableGuid.Value
+                                _hashtable(Key) = value
+End SyncLock
+End Function
+
+Function GetValue(ByVal id as String) As Object
+                SyncLock _hashtable.SyncRoot
+                dim Key as String = id & Report.Parameters!TableGuid.Value
+                Return _hashtable(Key )              
+End SyncLock
+End Function
+
+Public Function GetJobAssy(LocalVar as String) As String
+IF (LocalVar <> nothing or LocalVar<>"") then
+SetValue("JobAssy", LocalVar)
+End IF
+Return GetValue("JobAssy")
+End Function
+
+
+Public Function BreakStringinWords(ByVal sInputStr As String, ByVal iLineLen As Integer) As String 
+	    
+	    
+	    Dim sTemp As String 
+	    
+	    Dim sRetStr As String 
+	    
+	    Dim iLastLoc As Integer = 0 
+	    
+	    Dim i As Integer = 0 
+    
+	    sTemp = sInputStr 
+	    
+	    sRetStr = "" 
+	    
+	    If sInputStr Is Nothing OrElse sInputStr = "" Then 
+	        Return sInputStr 
+	    End If 
+	    Do 
+	        
+	        
+	        If i > iLineLen Then 
+	            
+	            
+	            If iLastLoc > 0 Then 
+	                
+	                
+	                sRetStr = sRetStr + sTemp.Substring(0, iLastLoc) + System.Environment.NewLine 
+	                    
+	                sTemp = sTemp.Substring(iLastLoc).Trim() 
+	            Else 
+	                
+                
+	                
+	                sRetStr = sRetStr + sTemp.Substring(0, iLineLen) + System.Environment.NewLine 
+	                
+	                    
+	                sTemp = sTemp.Substring(iLineLen).Trim() 
+	            End If 
+	            
+            iLastLoc = 0 
+	            
+                
+	            i = 0 
+	        End If 
+	        
+	        If sTemp.Substring(i, 1) = " " Then 
+	                
+	            iLastLoc = i 
+	        End If 
+	        i = i + 1 
+	    Loop While i < sTemp.Length 
+	    
+	    sRetStr = sRetStr + sTemp 
+    Return sRetStr 
+	End Function 
+
+
+
