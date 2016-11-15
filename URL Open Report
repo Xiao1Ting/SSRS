@@ -1,0 +1,20 @@
+="javascript:void window.open(" &" ' "& Globals!ReportServerUrl &"/Pages/ReportViewer.aspx?"
+&Globals!ReportFolder &"/ProdDtl&rc:Parameters=False
+&PartNum="& Fields!PartNum.Value &"
+','ProductionDetailReport','left=100,top=100,width=1200,height=770,status=no,menubar=no,scrollbars=no,location=yes'" & ")"
+
+
+
+//Open new subreport in new window. the size is fit for screen.
+
+
+
+
+="javascript:void window.open(" &" ' "& Globals!ReportServerUrl &"/Pages/ReportViewer.aspx?"
+&Globals!ReportFolder &"/ProdDtl&rc:Parameters=False
+&PartNum="& Fields!PartNum.Value &"')"
+
+
+
+//Open subreport in new tag.
+
