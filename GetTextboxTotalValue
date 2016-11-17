@@ -1,0 +1,13 @@
+Public Shared Value as Decimal=0.00 
+Public Shared Function GetValue(Item as Decimal) as Decimal
+value= value + Item 
+return Item 
+End Function 
+Public Shared Function GetTotal() 
+return value 
+End Function
+
+
+//How to use function
+//Code.GetValue(field1*Field2)
+//Code.GetTotal()
